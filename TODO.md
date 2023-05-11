@@ -1,8 +1,6 @@
-# Example of TODO.md
+# Discord Game Bot TODO.md
 
-This is an example of TODO.md
-
-View the raw content of this file to understand the format.
+[@MFrancomb1](https://github.com/MFrancomb1)'s in progress discord bot.
 
 ### Todo
 
