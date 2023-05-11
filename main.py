@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import asyncio
 import pymongo
 from pymongo import MongoClient
+from chess_game import MyBoard
 
 import random
 
@@ -12,6 +13,7 @@ load_dotenv()
 URI = os.getenv('MONGO_URI')
 TOKEN = os.getenv("DISCORD_TOKEN")
 
+board = MyBoard()
 
 #connect to the databse
 client = MongoClient(URI)
@@ -59,5 +61,23 @@ async def on_message(message):
             await message.channel.send('Too high.')
         else:
             await message.channel.send('Too low.')
+
+    if message.content.startswith(";chess"):
+        await message.channel.send("Let's play chess! :smile:")
+        await message.channel.send(board.unicode(invert_color=True))
+    
+    elif message.content.startswith(";fen"):
+        await message.channel.send(board.fen())
+
+    elif(message.content.startswith(";")):
+        move = message.content.strip(";")
+        result = board.move(move)
+        if not result:
+            await message.channel.send(board.unicode(invert_color=True))
+        else:
+            await message.channel.send(result)
+
+
+
 
 client.run(TOKEN)
