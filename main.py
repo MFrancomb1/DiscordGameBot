@@ -63,8 +63,13 @@ async def on_message(message):
             await message.channel.send('Too low.')
 
     if message.content.startswith(";chess"):
-        await message.channel.send("Let's play chess! :smile:")
-        await message.channel.send(board.unicode(invert_color=True))
+        if board.in_progress:
+            await message.channel.send("enter ;chess command to confirm new game")
+            board.in_progress = False
+        else:
+            await message.channel.send("Let's play chess! :smile:")
+            board.startgame()
+            await message.channel.send(board.unicode(invert_color=True))
     
     elif message.content.startswith(";fen"):
         await message.channel.send(board.fen())
