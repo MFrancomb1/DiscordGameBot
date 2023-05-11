@@ -4,13 +4,15 @@
 
 ### Todo
 
-- [ ] MongoDB book keeping 
+- [ ] MongoDB record keeping 
 - [ ] Emoji print method for the chess board
   - [ ] verify/add proper emojis (check Bot permissions in the dev portal)
+- [ ] associate game players with discord users for record keeping
 
 ### In Progress
 
 - [ ] Continue to update README with better markdown
+- [ ] chess game
 
 ### Done ✓
 
